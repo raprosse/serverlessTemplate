@@ -1,0 +1,65 @@
+{
+  "name": "nordcloudBoilerPlate",
+  "version": "1.4.1",
+  "description": "A boilerplate for Serverless applications by Nordcloud",
+  "keywords": [
+    "serverless",
+    "aws"
+  ],
+  "author": "Mikael Puittinen",
+  "contributors": [
+    "Eetu Tuomala"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nordcloud/serverless-boilerplate.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.22",
+    "@types/chai": "^4.0.4",
+    "@types/chance": "^1.0.0",
+    "@types/mocha": "^5.0.0",
+    "@types/node": "^8.10.0",
+    "@types/request": "^2.0.8",
+    "@types/request-promise-native": "^1.0.10",
+    "aws-sdk": "^2.54.0",
+    "copy-webpack-plugin": "^3.0.1",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.1.1",
+    "json-loader": "^0.5.4",
+    "node-yaml": "^3.0.3",
+    "nsp": "^3.2.1",
+    "request-json": "^0.6.2",
+    "serverless-kms-secrets": "^1.0.3",
+    "serverless-mocha-plugin": "^1.8.2",
+    "serverless-offline": "^3.2.1",
+    "serverless-plugin-custom-roles": "^1.0.0",
+    "serverless-plugin-split-stacks": "^1.4.1",
+    "serverless-webpack": "^5.1.0",
+    "ts-loader": "^4.4.1",
+    "typescript": "^2.5.2",
+    "webpack": "^4.8.3",
+    "webpack-node-externals": "^1.5.4"
+  },
+  "scripts": {
+    "nsp": "node_modules/.bin/nsp check",
+    "compare-boilerplate": "node .tools/check-boilerplate-packages.js",
+    "analyse": "npm run lint:ts && npm run lint:ts && npm run test",
+    "clean": "rimraf .build .serverless .nyc_output coverage",
+    "prebuild": "npm run clean && npm run analyse",
+    "build": "serverless package",
+    "predeploy": "npm run clean && npm run analyse",
+    "deploy": "serverless deploy",
+    "lint:js": "eslint .",
+    "lint:ts": "tslint --project . --format verbose",
+    "start": "serverless offline start",
+    "pretest": "npm run clean",
+    "test": "SLS_DEBUG=true serverless invoke test"
+  }
+}
